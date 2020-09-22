@@ -130,7 +130,7 @@ end
 def num_points_scored(player_finder)
   game_hash.each do |team, team_info|
     team_info[:players].each do |player|
-      binding.pry
+  #    binding.pry
       if player[:player_name] == player_finder
         return player[:points]
       end
@@ -153,7 +153,7 @@ def team_colors(team_info)
    if team_info == "Charlotte Hornets"
      return game_hash[:away][:colors]
   # elsif team_info == "Brookyln Nets"
-  elseif
+  else
     # binding.pry
        return game_hash[:home][:colors]
     end
@@ -166,7 +166,8 @@ def team_names
   end
 end
 
-def player_numbers(name)
+def player_numbers(team)
+  binding.pry
   game_hash.each do |team, team_info|
     team_info.each do |player|
 #      binding.pry
@@ -176,3 +177,24 @@ def player_numbers(name)
     end
   end
 end
+
+#def player_stats(name)
+#  game_hash.each do |team, team_info|
+#    team_info.each do |player|
+#      binding.pry
+#      if player[:player_name] == name
+#        return player_stats
+#      end
+#    end
+#  end
+  #binding.pry
+#end
+
+def player_stats(name)
+  game_hash.each do |team, team_info|
+    if team_info[:players][:player_name] == name
+        return team_info[:players]
+    end
+  end
+end
+  #binding.pry
