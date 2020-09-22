@@ -166,17 +166,26 @@ def team_names
   end
 end
 
-def player_numbers(team)
-  binding.pry
+def player_numbers(team_name)
+  nums = []
   game_hash.each do |team, team_info|
-    team_info.each do |player|
-#      binding.pry
-      if player[:player_name] == name
-        return player[:number].to_i
+    if team_info[:team_name] == team_name
+      team_info.each do |key, value|
+    #  binding.pry
+        if key == [:players]
+          value.each do |stat, stat_value|
+              if stat == [:number]
+          #  binding.pry
+                nums.push(stat_value)
+              end
+            end
+          end
+        end
       end
     end
-  end
+  return nums
 end
+
 
 #def player_stats(name)
 #  game_hash.each do |team, team_info|
