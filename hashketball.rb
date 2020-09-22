@@ -174,10 +174,9 @@ def player_numbers(team_name)
   #   binding.pry
         if key == :players
           binding.pry
-          value.each do |stat, stat_value|
-              if stat == :number
+          value.each do |stats|
           #  binding.pry
-                nums.push(stat_value)
+                nums.push(stats[:number])
               end
             end
           end
