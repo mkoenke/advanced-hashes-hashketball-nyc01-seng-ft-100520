@@ -194,9 +194,10 @@ def player_stats(name)
           if key == :players
             value.each do |player|
               if name == player[:player_name]
-  #   binding.pry
-        if key == :players
-        #  binding.pry
-  end
-end
+              end
+            end
+          end
+        end
+      end
+    end
   #binding.pry
