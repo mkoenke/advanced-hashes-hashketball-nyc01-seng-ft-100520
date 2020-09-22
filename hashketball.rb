@@ -130,7 +130,7 @@ end
 def num_points_scored(player_finder)
   game_hash.each do |team, team_info|
     team_info[:players].each do |player|
-      binding.pry
+  #    binding.pry
       if player[:player_name] == player_finder
         return player[:points]
       end
@@ -153,7 +153,7 @@ def team_colors(team_info)
    if team_info == "Charlotte Hornets"
      return game_hash[:away][:colors]
   # elsif team_info == "Brookyln Nets"
-  elseif
+  else
     # binding.pry
        return game_hash[:home][:colors]
     end
@@ -166,13 +166,53 @@ def team_names
   end
 end
 
-def player_numbers(name)
+def player_numbers(team_name)
+  nums = []
   game_hash.each do |team, team_info|
-    team_info.each do |player|
-#      binding.pry
-      if player[:player_name] == name
-        return player[:number].to_i
+    if team_info[:team_name] == team_name
+      team_info.each do |key, value|
+  #   binding.pry
+        if key == :players
+        #  binding.pry
+          value.each do |stats|
+          #  binding.pry
+                nums.push(stats[:number])
+              end
+            end
+          end
+        end
+    end
+  return nums
+end
+
+
+
+def player_stats(name)
+  stats = []
+  game_hash.each do |team, team_info|
+      team_info.each do |key, value|
+          if key == :players
+            value.each do |player|
+          #    binding.pry
+              if name == player[:player_name]
+                return player
+              end
+            end
+          end
+        end
+      end
+    end
+
+def big_shoe_rebounds
+  biggest_shoe = 0
+  rebounds = 0
+  game_hash.each do |team, team_info|
+      team_info[:players].each do |player|
+        if player[:shoe] > biggest_shoe
+          biggest_shoe = player[:shoe]
+          rebounds = player[:rebounds]
       end
     end
   end
+  return rebounds
 end
