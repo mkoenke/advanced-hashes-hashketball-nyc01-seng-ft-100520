@@ -172,9 +172,9 @@ def player_numbers(team_name)
     if team_info[:team_name] == team_name
       team_info.each do |key, value|
     #  binding.pry
-        if key == [:players]
+        if key == :players
           value.each do |stat, stat_value|
-              if stat == [:number]
+              if stat == :number
           #  binding.pry
                 nums.push(stat_value)
               end
